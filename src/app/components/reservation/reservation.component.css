@@ -1,0 +1,24 @@
+/* reservations.component.css */
+.card {
+  cursor: pointer;
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+.card:hover {
+  box-shadow: 0 0 11px rgba(33,33,33,.2);
+}
+
+.card-body.text-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.card-title {
+  margin-bottom: 15px;
+}
+
+.btn {
+  width: 80%;
+  margin-top: auto;
+}

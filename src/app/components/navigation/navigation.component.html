@@ -1,0 +1,43 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">Hotel System</a>
+  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link" routerLink="/home">Home</a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" id="reservationsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          Rezerwacje
+        </a>
+        <ul class="dropdown-menu" aria-labelledby="reservationsDropdown">
+          <li><a class="dropdown-item" routerLink="/reservations/create">Stwórz Rezerwację</a></li>
+          <li><a class="dropdown-item" routerLink="/reservations/modify">Modyfikuj Rezerwację</a></li>
+          <li><a class="dropdown-item" routerLink="/reservations/view">Wyświetl Rezerwacje</a></li>
+        </ul>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" id="clientsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          Klienci
+        </a>
+        <ul class="dropdown-menu" aria-labelledby="clientsDropdown">
+          <li><a class="dropdown-item" routerLink="/clients/create">Dodaj klienta</a></li>
+          <li><a class="dropdown-item" routerLink="/clients/modify">Edytuj klienta</a></li>
+          <li><a class="dropdown-item" routerLink="/clients/view">Wyświetl klientów</a></li>
+        </ul>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" id="apartmentsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          Pokoje
+        </a>
+        <ul class="dropdown-menu" aria-labelledby="apartmentsDropdown">
+          <li><a class="dropdown-item" routerLink="/apartments/create">Dodaj pokój</a></li>
+          <li><a class="dropdown-item" routerLink="/apartments/modify">Modyfikuj pokój</a></li>
+          <li><a class="dropdown-item" routerLink="/apartments/view">Wyświetl pokoje</a></li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</nav>
