@@ -13,19 +13,29 @@ import { CreateApartmentComponent } from './components/apartment/create/createAp
 import { ViewApartmentComponent } from './components/apartment/view/viewApartment.component';
 import { ModifyApartmentComponent } from './components/apartment/modify/modifyApartment.component';
 import { CancelReservationComponent } from './components/reservation/cancel/cancelReservation.component';
+import {ModifyReservationComponent} from "./components/reservation/modify/modifyReservation.component";
+import {ViewReservationComponent} from "./components/reservation/view/viewReservation.component";
+import {CreateClientComponent} from "./components/client/create/createClient.component";
+import {ModifyClientComponent} from "./components/client/modify/modifyClient.component";
+import {ViewClientComponent} from "./components/client/view/viewClient.component";
 
 @NgModule({
   declarations: [
     AppComponent,
-    ReservationComponent,
     HomeComponent,
     NavigationComponent,
-    ClientComponent,
     ApartmentComponent,
     CreateApartmentComponent,
     ViewApartmentComponent,
     ModifyApartmentComponent,
-    CancelReservationComponent
+    ReservationComponent,
+    CancelReservationComponent,
+    ModifyReservationComponent,
+    ViewReservationComponent,
+    ClientComponent,
+    CreateClientComponent,
+    ModifyClientComponent,
+    ViewClientComponent
   ],
   imports: [
     ReactiveFormsModule,
