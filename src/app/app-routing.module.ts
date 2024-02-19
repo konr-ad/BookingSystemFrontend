@@ -21,7 +21,7 @@ const routes: Routes = [
   { path: 'reservations/create', component: CreateReservationComponent },
   { path: 'reservations/cancellations', component: CancelReservationComponent },
   { path: 'reservations/list', component: ViewReservationComponent },
-  { path: 'reservations/edit', component: ModifyReservationComponent },
+  { path: 'reservations/edit/:id', component: ModifyReservationComponent },
   { path: 'clients', component: ClientComponent },
   { path: 'clients/create', component: CreateClientComponent },
   { path: 'clients/edit', component: ModifyClientComponent },

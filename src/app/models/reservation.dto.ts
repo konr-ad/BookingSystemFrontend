@@ -1,5 +1,5 @@
 export interface ReservationDto {
-  id?: number;
+  id: number;
   clientId: number;
   apartmentId: number[];
   startDate: Date;
@@ -8,4 +8,5 @@ export interface ReservationDto {
   totalPrice: number;
   modifiedDate: Date;
   notes?: string;
+  isEditing?: boolean;
 }
