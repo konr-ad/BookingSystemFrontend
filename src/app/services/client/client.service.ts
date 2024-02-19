@@ -2,7 +2,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { ClientDto } from '../../models/client.dto'; // Załóżmy, że masz taki model
+import { ClientDto } from '../../models/client.dto';
 
 @Injectable({
   providedIn: 'root'
@@ -16,8 +16,25 @@ export class ClientService {
     return this.http.post<ClientDto>(this.apiUrl, clientData);
   }
 
-  // Metody do obsługi pozostałych operacji CRUD...
   getAllClients(): Observable<ClientDto[]> {
     return this.http.get<ClientDto[]>(this.apiUrl);
+  }
+
+  searchClients(term: string): Observable<ClientDto[]> {
+    const url = `${this.apiUrl}?search=${term}`;
+    return this.http.get<ClientDto[]>(url);
+  }
+
+  getClient(id: number): Observable<ClientDto> {
+    return this.http.get<ClientDto>(`${this.apiUrl}/${id}`);
+  }
+
+  updateClient(client: ClientDto): Observable<ClientDto> {
+    const url = `${this.apiUrl}/${client.id}`;
+    return this.http.put<ClientDto>(url, client);
+  }
+
+  deleteClient(id: number): Observable<void> {
+    return this.http.delete<void>(`${this.apiUrl}/${id}`);
   }
 }

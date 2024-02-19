@@ -1,1 +1,59 @@
-<p>view works!</p>
+<div class="container mt-4">
+  <h2>Lista Klientów</h2>
+  <div class="input-group mb-3">
+    <input type="text" class="form-control" placeholder="Szukaj klienta..." aria-label="Szukaj klienta" [(ngModel)]="searchTerm">
+    <div class="input-group-append">
+      <button class="btn btn-outline-secondary" type="button" (click)="searchClients()">Szukaj</button>
+    </div>
+  </div>
+    <table class="table">
+    <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Imię</th>
+      <th scope="col">Nazwisko</th>
+      <th scope="col">Email</th>
+      <th scope="col">Numer telefonu</th>
+      <th scope="col">Metoda płatności</th>
+      <th scope="col">Data urodzenia</th>
+      <th scope="col">Akcje</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let client of clients; let i = index">
+      <ng-container *ngIf="!client.isEditing; else editClientForm">
+        <th scope="row">{{ i + 1 }}</th>
+        <td>{{ client.firstName }}</td>
+        <td>{{ client.lastName }}</td>
+        <td>{{ client.email }}</td>
+        <td>{{ client.phoneNumber }}</td>
+        <td>{{ client.preferredPaymentMethod }}</td>
+        <td>{{ client.dateOfBirth }}</td>
+        <td>
+          <button class="btn btn-primary btn-sm" (click)="enableEdit(client.id)">Edytuj</button>
+        </td>
+      </ng-container>
+      <ng-template #editClientForm>
+        <th scope="row">{{ i + 1 }}</th>
+        <td><input [(ngModel)]="client.firstName" class="form-control"/></td>
+        <td><input [(ngModel)]="client.lastName" class="form-control"/></td>
+        <td><input [(ngModel)]="client.email" class="form-control"/></td>
+        <td><input [(ngModel)]="client.phoneNumber" class="form-control"/></td>
+        <td>
+          <select class="form-control" [(ngModel)]="client.preferredPaymentMethod">
+            <option value="Credit Card">Karta kredytowa</option>
+            <option value="Debit Card">Karta debetowa</option>
+            <option value="PayPal">PayPal</option>
+            <option value="Bank Transfer">Przelew bankowy</option>
+          </select>
+        </td>
+        <td>
+          <button class="btn btn-success btn-sm" (click)="saveClient(client)">Zapisz</button>
+          <button class="btn btn-secondary btn-sm" (click)="cancelEdit()">Anuluj</button>
+          <button class="btn btn-danger btn-sm" (click)="deleteClient(client.id)">Usuń</button>
+        </td>
+      </ng-template>
+    </tr>
+    </tbody>
+  </table>
+</div>

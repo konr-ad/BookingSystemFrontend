@@ -1,1 +1,56 @@
-<p>create works!</p>
+<!-- createClient.component.html -->
+<form class="container mt-4" *ngIf="clientForm">
+  <div class="row">
+    <div class="col-lg-6 offset-lg-3">
+      <form [formGroup]="clientForm" (ngSubmit)="onSubmit()">
+        <h2>Dodaj Nowego Klienta</h2>
+        <div class="mb-3">
+          <label for="firstName" class="form-label">Imię</label>
+          <input formControlName="firstName" type="text" class="form-control" id="firstName" placeholder="Wpisz imię" required minlength="2">
+          <div class="invalid-feedback">
+            Imię jest wymagane i musi zawierać co najmniej 2 znaki.
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="lastName" class="form-label">Nazwisko</label>
+          <input formControlName="lastName" type="text" class="form-control" id="lastName" placeholder="Wpisz nazwisko" required minlength="2">
+          <div class="invalid-feedback">
+            Nazwisko jest wymagane i musi zawierać co najmniej 2 znaki.
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="email" class="form-label">Adres email</label>
+          <input formControlName="email" type="email" class="form-control" id="email" placeholder="Wpisz email" required>
+          <div class="invalid-feedback">
+            Format adresu email jest nieprawidłowy.
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="phoneNumber" class="form-label">Numer telefonu</label>
+          <input formControlName="phoneNumber" type="tel" class="form-control" id="phoneNumber" placeholder="Wpisz numer telefonu" required>
+          <div class="invalid-feedback">
+            Numer telefonu jest wymagany.
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="dateOfBirth" class="form-label">Data urodzenia</label>
+          <input formControlName="dateOfBirth" type="date" class="form-control" id="dateOfBirth" required>
+          <div class="invalid-feedback">
+            Data urodzenia jest wymagana.
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="preferredPaymentMethod" class="form-label">Preferowana metoda płatności</label>
+          <select formControlName="preferredPaymentMethod" class="form-select" id="preferredPaymentMethod">
+            <option selected>Wybierz...</option>
+            <option value="Credit Card">Karta kredytowa</option>
+            <option value="Debit Card">Karta debetowa</option>
+            <option value="PayPal">PayPal</option>
+            <option value="Bank Transfer">Przelew bankowy</option>
+          </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Dodaj</button>
+      </form>
+    </div>
+  </div>
+</form>
