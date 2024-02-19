@@ -1,1 +1,36 @@
-<p>create works!</p>
+<form class="container mt-4" *ngIf="apartmentForm" [formGroup]="apartmentForm" (ngSubmit)="onSubmit()">
+  <div class="row">
+    <div class="col-lg-6 offset-lg-3">
+      <h2>Dodaj Nowy Apartament</h2>
+      <div class="mb-3">
+        <label for="number" class="form-label">Numer</label>
+        <input formControlName="number" type="text" class="form-control" id="number" placeholder="Wpisz numer apartamentu" required>
+        <div *ngIf="apartmentForm.controls['number'].touched && apartmentForm.controls['number'].invalid" class="invalid-feedback">
+          Numer apartamentu jest wymagany.
+        </div>
+      </div>
+      <div class="mb-3">
+        <label for="pricePerNight" class="form-label">Cena za noc</label>
+        <input formControlName="pricePerNight" type="number" class="form-control" id="pricePerNight" placeholder="Wpisz cenę za noc" required>
+        <div *ngIf="apartmentForm.controls['pricePerNight'].touched && apartmentForm.controls['pricePerNight'].invalid" class="invalid-feedback">
+          Cena za noc jest wymagana.
+        </div>
+      </div>
+      <div class="mb-3">
+        <label for="area" class="form-label">Powierzchnia</label>
+        <input formControlName="area" type="text" class="form-control" id="area" placeholder="Wpisz powierzchnię apartamentu" required>
+        <div *ngIf="apartmentForm.controls['area'].touched && apartmentForm.controls['area'].invalid" class="invalid-feedback">
+          Powierzchnia apartamentu jest wymagana.
+        </div>
+      </div>
+      <div class="mb-3">
+        <label for="capacity" class="form-label">Pojemność</label>
+        <input formControlName="capacity" type="number" class="form-control" id="capacity" placeholder="Wpisz maksymalną ilość osób" required>
+        <div *ngIf="apartmentForm.controls['capacity'].touched && apartmentForm.controls['capacity'].invalid" class="invalid-feedback">
+          Maksymalna ilość osób jest wymagana.
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary">Dodaj</button>
+    </div>
+  </div>
+</form>

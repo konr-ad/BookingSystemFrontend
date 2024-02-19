@@ -1,1 +1,48 @@
-<p>view works!</p>
+<!-- viewApartment.component.html -->
+<div class="container mt-4">
+  <h2>Lista Apartamentów</h2>
+  <div class="input-group mb-3">
+    <input type="text" class="form-control" placeholder="Szukaj apartamentu..." aria-label="Szukaj apartamentu" [(ngModel)]="searchTerm">
+    <div class="input-group-append">
+      <button class="btn btn-outline-secondary" type="button" (click)="searchApartments()">Szukaj</button>
+    </div>
+  </div>
+  <table class="table">
+    <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Numer</th>
+      <th scope="col">Cena za noc</th>
+      <th scope="col">Powierzchnia</th>
+      <th scope="col">Pojemność</th>
+      <th scope="col">Akcje</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let apartment of apartments; let i = index">
+      <ng-container *ngIf="!apartment.isEditing; else editApartmentForm">
+        <th scope="row">{{ i + 1 }}</th>
+        <td>{{ apartment.number }}</td>
+        <td>{{ apartment.pricePerNight }}</td>
+        <td>{{ apartment.area }}</td>
+        <td>{{ apartment.capacity }}</td>
+        <td>
+          <button class="btn btn-primary btn-sm" (click)="enableEdit(apartment.id)">Edytuj</button>
+          <button class="btn btn-danger btn-sm" (click)="deleteApartment(apartment.id)">Usuń</button>
+        </td>
+      </ng-container>
+      <ng-template #editApartmentForm>
+        <th scope="row">{{ i + 1 }}</th>
+        <td><input [(ngModel)]="apartment.number" class="form-control"/></td>
+        <td><input [(ngModel)]="apartment.pricePerNight" type="number" class="form-control"/></td>
+        <td><input [(ngModel)]="apartment.area" class="form-control"/></td>
+        <td><input [(ngModel)]="apartment.capacity" type="number" class="form-control"/></td>
+        <td>
+          <button class="btn btn-success btn-sm" (click)="saveApartment(apartment)">Zapisz</button>
+          <button class="btn btn-secondary btn-sm" (click)="cancelEdit()">Anuluj</button>
+        </td>
+      </ng-template>
+    </tr>
+    </tbody>
+  </table>
+</div>
