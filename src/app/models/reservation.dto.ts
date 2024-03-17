@@ -1,12 +1,12 @@
 export interface ReservationDto {
-  id: number;
-  clientId: number;
-  apartmentId: number[];
+  id?: number;
+  clientDtoId: number;
+  apartmentsDtoIds: number[];
   startDate: Date;
   endDate: Date;
   reservationStatus: string;
   totalPrice: number;
-  modifiedDate: Date;
+  modifiedDate?: Date;
   notes?: string;
   isEditing?: boolean;
 }

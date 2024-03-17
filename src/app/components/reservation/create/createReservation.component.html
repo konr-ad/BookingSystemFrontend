@@ -1,1 +1,44 @@
-<p>create works!</p>
+<form class="container mt-4" *ngIf="reservationForm">
+  <div class="row">
+    <div class="col-lg-6 offset-lg-3">
+      <form [formGroup]="reservationForm" (ngSubmit)="onSubmit()">
+        <h2>Dodaj Nową Rezerwację</h2>
+        <!-- Poniżej dodajemy pola specyficzne dla rezerwacji -->
+        <div class="mb-3">
+          <label for="clientDtoId" class="form-label">Klient</label>
+          <select formControlName="clientDtoId" class="form-control" id="clientDtoId" required>
+            <option *ngFor="let client of clients" [ngValue]="client.id">{{client.firstName}} {{client.lastName}}</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="apartmentsDtoIds">Apartamenty</label>
+          <select formControlName="apartmentsDtoIds" class="form-control" id="apartmentsDtoIds" multiple>
+            <option *ngFor="let apartment of apartments" [value]="apartment.id">{{ apartment.number }}</option>
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label for="startDate" class="form-label">Data Rozpoczęcia</label>
+          <input formControlName="startDate" type="date" class="form-control" id="startDate" required>
+        </div>
+        <div class="mb-3">
+          <label for="endDate" class="form-label">Data Zakończenia</label>
+          <input formControlName="endDate" type="date" class="form-control" id="endDate" required>
+        </div>
+        <div class="mb-3">
+          <label for="reservationStatus" class="form-label">Status Rezerwacji</label>
+          <input formControlName="reservationStatus" type="text" class="form-control" id="reservationStatus" required>
+        </div>
+        <div class="mb-3">
+          <label for="totalPrice" class="form-label">Całkowity Koszt</label>
+          <input formControlName="totalPrice" type="number" class="form-control" id="totalPrice" required>
+        </div>
+        <div class="mb-3">
+          <label for="notes" class="form-label">Uwagi</label>
+          <textarea formControlName="notes" class="form-control" id="notes"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Dodaj</button>
+      </form>
+    </div>
+  </div>
+</form>
