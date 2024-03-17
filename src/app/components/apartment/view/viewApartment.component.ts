@@ -23,7 +23,7 @@ export class ViewApartmentComponent implements OnInit {
     this.apartmentService.getAllApartments().subscribe(apartments => {
       this.apartments = apartments.map(apartment => ({
         ...apartment,
-        isEditing: false // Dodajemy flagę do kontroli stanu edycji
+        isEditing: false //
       }));
     });
   }

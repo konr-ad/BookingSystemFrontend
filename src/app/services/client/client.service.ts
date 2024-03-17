@@ -1,8 +1,8 @@
 // client.service.ts
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { ClientDto } from '../../models/client.dto';
+import {Injectable} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+import {Observable} from 'rxjs';
+import {ClientDto} from '../../models/client.dto';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +10,8 @@ import { ClientDto } from '../../models/client.dto';
 export class ClientService {
   private apiUrl = 'http://localhost:8080/api/clients';
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+  }
 
   createClient(clientData: ClientDto): Observable<ClientDto> {
     return this.http.post<ClientDto>(this.apiUrl, clientData);
@@ -20,9 +21,8 @@ export class ClientService {
     return this.http.get<ClientDto[]>(this.apiUrl);
   }
 
-  searchClients(term: string): Observable<ClientDto[]> {
-    const url = `${this.apiUrl}?search=${term}`;
-    return this.http.get<ClientDto[]>(url);
+  searchClients(searchTerm: string): Observable<ClientDto[]> {
+    return this.http.get<ClientDto[]>(`${this.apiUrl}/search`, {params: {search: searchTerm}});
   }
 
   getClient(id: number): Observable<ClientDto> {

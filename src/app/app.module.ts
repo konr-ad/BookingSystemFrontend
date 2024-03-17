@@ -18,6 +18,7 @@ import {ViewReservationComponent} from "./components/reservation/view/viewReserv
 import {CreateClientComponent} from "./components/client/create/createClient.component";
 import {ModifyClientComponent} from "./components/client/modify/modifyClient.component";
 import {ViewClientComponent} from "./components/client/view/viewClient.component";
+import {CreateReservationComponent} from "./components/reservation/create/createReservation.component";
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import {ViewClientComponent} from "./components/client/view/viewClient.component
     ClientComponent,
     CreateClientComponent,
     ModifyClientComponent,
-    ViewClientComponent
+    ViewClientComponent,
+    CreateReservationComponent
   ],
   imports: [
     ReactiveFormsModule,

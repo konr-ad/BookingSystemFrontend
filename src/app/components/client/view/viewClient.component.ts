@@ -39,11 +39,11 @@ export class ViewClientComponent implements OnInit {
   }
 
   searchClients() {
-    this.clientService.searchClients(this.searchTerm).subscribe(
-      clients => this.clients = clients,
-      error => console.error('Błąd podczas wyszukiwania klientów', error)
-    );
+    this.clientService.searchClients(this.searchTerm).subscribe((data: ClientDto[]) => {
+      this.clients = data;
+    });
   }
+
   addReservation(clientId?: number) {
     if (clientId === undefined) {
       // Obsłuż sytuację, gdy id jest undefined, np. wyświetl komunikat błędu
