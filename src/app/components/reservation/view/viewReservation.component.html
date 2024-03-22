@@ -1,1 +1,35 @@
-<p>view works!</p>
+<div class="container mt-4">
+  <h2>Lista Rezerwacji</h2>
+  <div class="input-group mb-3">
+    <input type="text" class="form-control" placeholder="Szukaj rezerwacji..." aria-label="Szukaj rezerwacji" [(ngModel)]="searchTerm">
+    <div class="input-group-append">
+      <button class="btn btn-outline-secondary" type="button" (click)="searchReservations()">Szukaj</button>
+    </div>
+  </div>
+  <table class="table">
+    <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">ID Klienta</th>
+      <th scope="col">ID Apartamentów</th>
+      <th scope="col">Data rozpoczęcia</th>
+      <th scope="col">Data zakończenia</th>
+      <th scope="col">Status</th>
+      <th scope="col">Cena łączna</th>
+      <th scope="col">Uwagi</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let reservation of reservations; let i = index">
+      <th scope="row">{{ i + 1 }}</th>
+      <td>{{ reservation.clientDtoId }}</td>
+      <td>{{ reservation.apartmentsDtoIds.join(', ') }}</td>
+      <td>{{ reservation.startDate | date }}</td>
+      <td>{{ reservation.endDate | date }}</td>
+      <td>{{ reservation.reservationStatus }}</td>
+      <td>{{ reservation.totalPrice }}</td>
+      <td>{{ reservation.notes }}</td>
+    </tr>
+    </tbody>
+  </table>
+</div>
